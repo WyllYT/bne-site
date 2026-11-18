@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasileiros No Extremo</title>
+<style>
+	:root {
+		--fundo: #121018;
+		--fundo2: #18151f;
+		--cartao: #1f1b29;
+		--borda: rgba(242,184,75,.18);
+		--ouro: #f2b84b;
+		--ouro2: #ffcf6e;
+		--texto: #f1eef7;
+		--fraco: #a39cb8;
+		--verde: #6ee787;
+	}
+	* { box-sizing: border-box; }
+	body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.5; }
+	a { color: inherit; text-decoration: none; }
+	img { max-width: 100%; }
+
+	.container { max-width: 1100px; margin: 0 auto; padding: 0 1.2rem; }
+
+	header.topo { position: sticky; top: 0; z-index: 10; background: rgba(18,16,24,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda); }
+	header.topo .container { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; }
+	.logo { font-weight: 800; font-size: 1.1rem; letter-spacing: .5px; }
+	.logo b { color: var(--ouro); }
+	nav a { margin-left: 1.4rem; font-size: .9rem; color: var(--fraco); }
+	nav a:hover { color: var(--ouro); }
+	@media (max-width: 640px) { nav { display: none; } }
+
+	.hero { padding: 5rem 0 4rem; text-align: center; background: radial-gradient(ellipse at top, rgba(242,184,75,.10), transparent 60%); }
+	.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 .6rem; font-weight: 800; }
+	.hero h1 span { color: var(--ouro); }
+	.hero p { color: var(--fraco); font-size: 1.1rem; max-width: 640px; margin: 0 auto 2rem; }
+
+	.botoes { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.6rem; }
+	.botao { padding: .85rem 1.6rem; border-radius: .6rem; font-weight: 700; font-size: .95rem; display: inline-flex; align-items: center; gap: .5rem; transition: transform .15s, box-shadow .15s; }
+	.botao:hover { transform: translateY(-2px); }
+	.botao.ouro { background: linear-gradient(135deg, var(--ouro), var(--ouro2)); color: #2a1a05; box-shadow: 0 6px 20px rgba(242,184,75,.25); }
+	.botao.discord { background: #5865F2; color: #fff; box-shadow: 0 6px 20px rgba(88,101,242,.3); }
+	.botao.contorno { background: transparent; border: 1px solid var(--borda); color: var(--texto); }
+
+	.ip-caixa { display: inline-flex; align-items: center; gap: .6rem; background: var(--cartao); border: 1px solid var(--borda); padding: .6rem 1rem; border-radius: .6rem; font-family: 'Consolas', monospace; font-size: .95rem; }
+	.ip-caixa button { background: var(--ouro); color: #2a1a05; border: none; padding: .35rem .7rem; border-radius: .4rem; font-weight: 700; font-size: .8rem; cursor: pointer; }
+	.ip-caixa button:hover { background: var(--ouro2); }
+
+	section { padding: 4rem 0; }
+	section h2 { font-size: 1.8rem; text-align: center; margin-bottom: .4rem; }
+	section .sub { text-align: center; color: var(--fraco); margin-bottom: 2.4rem; }
+
+	.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.1rem; }
+	.card { background: var(--cartao); border: 1px solid var(--borda); border-radius: .9rem; padding: 1.4rem; }
+	.card .icone { font-size: 1.8rem; margin-bottom: .6rem; display: block; }
+	.card h3 { margin: 0 0 .4rem; font-size: 1.05rem; color: var(--ouro2); }
+	.card p { margin: 0; color: var(--fraco); font-size: .88rem; }
+
+	.regras { background: var(--fundo2); }
+	.regras ol { max-width: 760px; margin: 0 auto; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 1rem; }
+	.regras li { color: var(--fraco); font-size: .95rem; }
+	.regras li b { color: var(--texto); }
+
+	footer { border-top: 1px solid var(--borda); padding: 2.2rem 0; text-align: center; color: var(--fraco); font-size: .85rem; }
+	footer .links { display: flex; justify-content: center; gap: 1.4rem; margin-bottom: .8rem; flex-wrap: wrap; }
+	footer .links a:hover { color: var(--ouro); }
+
+	.toast { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ouro); color: #2a1a05; padding: .6rem 1.1rem; border-radius: .5rem; font-weight: 700; font-size: .85rem; opacity: 0; transition: all .25s; pointer-events: none; }
+	.toast.mostrar { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="topo">
+	<div class="container">
+		<div class="logo"><b>BNE</b> Brasileiros No Extremo</div>
+		<nav>
+			<a href="#recursos">Recursos</a>
+			<a href="#regras">Regras</a>
+			<a href="#conectar">Conectar</a>
+		</nav>
+	</div>
+</header>
+
+<section class="hero">
+	<div class="container">
+		<h1>Viva o seu <span>Roleplay</span><br>no extremo</h1>
+		<p>Servidor de Roleplay brasileiro com economia realista, celular funcional, sistema policial completo e muito mais. Sem mimimi, só RP de verdade.</p>
+		<div class="botoes">
+			<a class="botao ouro" href="mtasa://190.102.40.7:22823">▶ Jogar agora</a>
+			<a class="botao discord" href="https://discord.gg/VjEcZy9S6s" target="_blank">💬 Discord</a>
+		</div>
+		<div class="ip-caixa">
+			<span id="ip">190.102.40.7:22823</span>
+			<button onclick="copiarIP()">Copiar</button>
+		</div>
+	</div>
+</section>
+
+<section id="recursos">
+	<div class="container">
+		<h2>Recursos do servidor</h2>
+		<p class="sub">Tudo pensado pra deixar o RP mais realista possível.</p>
+		<div class="grade">
+			<div class="card">
+				<span class="icone">📱</span>
+				<h3>Celular realista</h3>
+				<p>SMS, WhatsApp, redes sociais, câmera, loja de apps e muito mais — quase um celular de verdade dentro do jogo.</p>
+			</div>
+			<div class="card">
+				<span class="icone">💰</span>
+				<h3>Economia completa</h3>
+				<p>Carteira, conta bancária, caixas eletrônicos espalhados pela cidade, empregos e um sistema financeiro de verdade.</p>
+			</div>
+			<div class="card">
+				<span class="icone">💳</span>
+				<h3>BNE Coins via PIX</h3>
+				<p>Compre a moeda VIP do servidor com PIX automático, direto pelo painel do jogo — sem precisar de ticket no Discord.</p>
+			</div>
+			<div class="card">
+				<span class="icone">🚓</span>
+				<h3>Polícia e SAMU</h3>
+				<p>Viaturas com sirene de verdade, prisão, sistema de ocorrências e atendimento médico realista.</p>
+			</div>
+			<div class="card">
+				<span class="icone">🚗</span>
+				<h3>Garagem e concessionária</h3>
+				<p>Compre, venda e guarde seus veículos. Handling realista pra cada carro, do popular ao esportivo.</p>
+			</div>
+			<div class="card">
+				<span class="icone">⭐</span>
+				<h3>Loja VIP e Passe de Batalha</h3>
+				<p>Skins de armas exclusivas, vagas extras de garagem e recompensas de temporada pra quem joga todo dia.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="regras" class="regras">
+	<div class="container">
+		<h2>Regras do servidor</h2>
+		<p class="sub">Resumo — as regras completas ficam fixadas no Discord.</p>
+		<ol>
+			<li><b>Respeite o Roleplay.</b> Aqui o personagem existe de verdade: reaja às situações como ele reagiria, sem quebrar o clima do RP.</li>
+			<li><b>Proibido Metagaming.</b> Não use informações que seu personagem não teria como saber (ex: ouvir algo no Discord e agir no jogo).</li>
+			<li><b>Proibido Powergaming.</b> Não force ações impossíveis de recusar nem exagere as capacidades do seu personagem.</li>
+			<li><b>Combate justo (NVL/CVL).</b> Siga as regras de combate: avisos, distância mínima, e dê chance real de reação ao outro jogador.</li>
+			<li><b>Sem ofensas ou discurso de ódio.</b> Fora do personagem (OOC), mantenha o respeito com todo mundo.</li>
+			<li><b>Sem cheat, bug ou exploit.</b> Usar qualquer vantagem indevida resulta em banimento permanente.</li>
+			<li><b>Staff tem a palavra final.</b> Em casos de dúvida ou conflito, decisões da equipe de administração devem ser respeitadas.</li>
+		</ol>
+	</div>
+</section>
+
+<section id="conectar">
+	<div class="container" style="text-align:center;">
+		<h2>Pronto pra começar?</h2>
+		<p class="sub">Entra agora e cria seu personagem.</p>
+		<div class="botoes">
+			<a class="botao ouro" href="mtasa://190.102.40.7:22823">▶ Conectar no servidor</a>
+			<a class="botao contorno" href="https://discord.gg/VjEcZy9S6s" target="_blank">Entrar no Discord</a>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="container">
+		<div class="links">
+			<a href="https://discord.gg/VjEcZy9S6s" target="_blank">Discord</a>
+			<a href="#recursos">Recursos</a>
+			<a href="#regras">Regras</a>
+		</div>
+		<div>IP: 190.102.40.7:22823 · © Brasileiros No Extremo</div>
+	</div>
+</footer>
+
+<div class="toast" id="toast">IP copiado!</div>
+
+<script>
+	function copiarIP() {
+		navigator.clipboard.writeText("190.102.40.7:22823").then(function () {
+			var t = document.getElementById("toast");
+			t.classList.add("mostrar");
+			setTimeout(function () { t.classList.remove("mostrar"); }, 1800);
+		});
+	}
+</script>
+
+</body>
+</html>
