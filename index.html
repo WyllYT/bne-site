@@ -6,14 +6,15 @@
 <title>Brasileiros No Extremo</title>
 <style>
 	:root {
-		--fundo: #121018;
-		--fundo2: #18151f;
-		--cartao: #1f1b29;
-		--borda: rgba(242,184,75,.18);
-		--ouro: #f2b84b;
-		--ouro2: #ffcf6e;
+		--fundo: #110f1a;
+		--fundo2: #171325;
+		--cartao: #1d1830;
+		--borda: rgba(149,97,255,.22);
+		--roxo: #7350cf;
+		--roxo2: #9b7bff;
+		--roxoEscuro: #1d2b64;
 		--texto: #f1eef7;
-		--fraco: #a39cb8;
+		--fraco: #a79fc2;
 		--verde: #6ee787;
 	}
 	* { box-sizing: border-box; }
@@ -23,29 +24,29 @@
 
 	.container { max-width: 1100px; margin: 0 auto; padding: 0 1.2rem; }
 
-	header.topo { position: sticky; top: 0; z-index: 10; background: rgba(18,16,24,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda); }
+	header.topo { position: sticky; top: 0; z-index: 10; background: rgba(17,15,26,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda); }
 	header.topo .container { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; }
 	.logo { font-weight: 800; font-size: 1.1rem; letter-spacing: .5px; }
-	.logo b { color: var(--ouro); }
+	.logo b { color: var(--roxo2); }
 	nav a { margin-left: 1.4rem; font-size: .9rem; color: var(--fraco); }
-	nav a:hover { color: var(--ouro); }
+	nav a:hover { color: var(--roxo2); }
 	@media (max-width: 640px) { nav { display: none; } }
 
-	.hero { padding: 5rem 0 4rem; text-align: center; background: radial-gradient(ellipse at top, rgba(242,184,75,.10), transparent 60%); }
+	.hero { padding: 5rem 0 4rem; text-align: center; background: radial-gradient(ellipse at top, rgba(149,97,255,.16), transparent 60%); }
 	.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 .6rem; font-weight: 800; }
-	.hero h1 span { color: var(--ouro); }
+	.hero h1 span { color: var(--roxo2); }
 	.hero p { color: var(--fraco); font-size: 1.1rem; max-width: 640px; margin: 0 auto 2rem; }
 
 	.botoes { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.6rem; }
 	.botao { padding: .85rem 1.6rem; border-radius: .6rem; font-weight: 700; font-size: .95rem; display: inline-flex; align-items: center; gap: .5rem; transition: transform .15s, box-shadow .15s; }
 	.botao:hover { transform: translateY(-2px); }
-	.botao.ouro { background: linear-gradient(135deg, var(--ouro), var(--ouro2)); color: #2a1a05; box-shadow: 0 6px 20px rgba(242,184,75,.25); }
+	.botao.roxo { background: linear-gradient(135deg, var(--roxo), var(--roxo2)); color: #fff; box-shadow: 0 6px 20px rgba(149,97,255,.3); }
 	.botao.discord { background: #5865F2; color: #fff; box-shadow: 0 6px 20px rgba(88,101,242,.3); }
 	.botao.contorno { background: transparent; border: 1px solid var(--borda); color: var(--texto); }
 
 	.ip-caixa { display: inline-flex; align-items: center; gap: .6rem; background: var(--cartao); border: 1px solid var(--borda); padding: .6rem 1rem; border-radius: .6rem; font-family: 'Consolas', monospace; font-size: .95rem; }
-	.ip-caixa button { background: var(--ouro); color: #2a1a05; border: none; padding: .35rem .7rem; border-radius: .4rem; font-weight: 700; font-size: .8rem; cursor: pointer; }
-	.ip-caixa button:hover { background: var(--ouro2); }
+	.ip-caixa button { background: var(--roxo2); color: #1a1030; border: none; padding: .35rem .7rem; border-radius: .4rem; font-weight: 700; font-size: .8rem; cursor: pointer; }
+	.ip-caixa button:hover { background: #b199ff; }
 
 	section { padding: 4rem 0; }
 	section h2 { font-size: 1.8rem; text-align: center; margin-bottom: .4rem; }
@@ -54,8 +55,44 @@
 	.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.1rem; }
 	.card { background: var(--cartao); border: 1px solid var(--borda); border-radius: .9rem; padding: 1.4rem; }
 	.card .icone { font-size: 1.8rem; margin-bottom: .6rem; display: block; }
-	.card h3 { margin: 0 0 .4rem; font-size: 1.05rem; color: var(--ouro2); }
+	.card h3 { margin: 0 0 .4rem; font-size: 1.05rem; color: var(--roxo2); }
 	.card p { margin: 0; color: var(--fraco); font-size: .88rem; }
+
+	/* ---------- Seção do celular interativo ---------- */
+	.celular-secao { display: flex; gap: 2.4rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+	.celular-texto { flex: 1; min-width: 260px; max-width: 420px; }
+	.celular-texto h2 { text-align: left; }
+	.celular-texto p { color: var(--fraco); }
+	.celular-texto .dica { font-size: .82rem; color: var(--roxo2); margin-top: 1rem; }
+
+	.aparelho { width: 17.5rem; height: 36rem; background: linear-gradient(145deg, #2a2a2e, #0c0c0e); border-radius: 2.3rem; padding: .55rem; box-shadow: 0 20px 50px rgba(0,0,0,.5); flex-shrink: 0; }
+	.tela { position: relative; width: 100%; height: 100%; border-radius: 1.9rem; overflow: hidden; background: radial-gradient(120% 90% at 20% 0%, var(--roxoEscuro), #3a1f66); display: flex; flex-direction: column; }
+	.status-cel { display: flex; justify-content: space-between; padding: .6rem .9rem .2rem; font-size: .78rem; font-weight: 600; }
+	.tela-home, .tela-app { padding: .8rem 1rem; flex: 1; display: flex; flex-direction: column; }
+	.tela-app { display: none; }
+	.tela-app.ativo { display: flex; }
+	.tela-home.escondido { display: none; }
+	.relogio-grande { text-align: center; font-size: 2.6rem; font-weight: 300; margin: .6rem 0 .1rem; }
+	.data-cel { text-align: center; color: rgba(255,255,255,.65); font-size: .8rem; margin-bottom: 1.4rem; }
+	.grade-apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: .9rem; }
+	.icone-app { display: flex; flex-direction: column; align-items: center; gap: .3rem; font-size: .62rem; color: rgba(255,255,255,.75); cursor: pointer; background: none; border: none; }
+	.icone-app .quadro { width: 2.9rem; height: 2.9rem; border-radius: .85rem; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+	.app-voltar { background: none; border: none; color: #fff; font-size: 1.5rem; margin-bottom: .4rem; cursor: pointer; align-self: flex-start; }
+	.app-titulo-cel { font-weight: 700; margin-bottom: .8rem; }
+
+	.chat-item { display: flex; gap: .6rem; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.08); align-items: center; }
+	.chat-item .avatar { width: 2.3rem; height: 2.3rem; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+	.chat-item .info { flex: 1; min-width: 0; }
+	.chat-item .nome { font-size: .82rem; font-weight: 600; }
+	.chat-item .msg { font-size: .74rem; color: rgba(255,255,255,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+	.banco-saldo { background: rgba(255,255,255,.12); border-radius: 1rem; padding: 1rem; text-align: center; margin-bottom: 1rem; }
+	.banco-saldo .valor { font-size: 1.6rem; font-weight: 800; }
+	.banco-saldo .rotulo { font-size: .72rem; color: rgba(255,255,255,.65); }
+	.banco-extrato .item { display: flex; justify-content: space-between; font-size: .78rem; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+
+	.feed-post { background: rgba(255,255,255,.08); border-radius: .8rem; padding: .7rem; margin-bottom: .7rem; font-size: .78rem; }
+	.feed-post .topo-post { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; font-weight: 600; }
 
 	.regras { background: var(--fundo2); }
 	.regras ol { max-width: 760px; margin: 0 auto; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 1rem; }
@@ -64,9 +101,9 @@
 
 	footer { border-top: 1px solid var(--borda); padding: 2.2rem 0; text-align: center; color: var(--fraco); font-size: .85rem; }
 	footer .links { display: flex; justify-content: center; gap: 1.4rem; margin-bottom: .8rem; flex-wrap: wrap; }
-	footer .links a:hover { color: var(--ouro); }
+	footer .links a:hover { color: var(--roxo2); }
 
-	.toast { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ouro); color: #2a1a05; padding: .6rem 1.1rem; border-radius: .5rem; font-weight: 700; font-size: .85rem; opacity: 0; transition: all .25s; pointer-events: none; }
+	.toast { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--roxo2); color: #1a1030; padding: .6rem 1.1rem; border-radius: .5rem; font-weight: 700; font-size: .85rem; opacity: 0; transition: all .25s; pointer-events: none; }
 	.toast.mostrar { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
 </head>
@@ -88,7 +125,7 @@
 		<h1>Viva o seu <span>Roleplay</span><br>no extremo</h1>
 		<p>Servidor de Roleplay brasileiro com economia realista, celular funcional, sistema policial completo e muito mais. Sem mimimi, só RP de verdade.</p>
 		<div class="botoes">
-			<a class="botao ouro" href="mtasa://190.102.40.7:22823">▶ Jogar agora</a>
+			<a class="botao roxo" href="mtasa://190.102.40.7:22823">▶ Jogar agora</a>
 			<a class="botao discord" href="https://discord.gg/VjEcZy9S6s" target="_blank">💬 Discord</a>
 		</div>
 		<div class="ip-caixa">
@@ -102,12 +139,82 @@
 	<div class="container">
 		<h2>Recursos do servidor</h2>
 		<p class="sub">Tudo pensado pra deixar o RP mais realista possível.</p>
-		<div class="grade">
-			<div class="card">
-				<span class="icone">📱</span>
-				<h3>Celular realista</h3>
-				<p>SMS, WhatsApp, redes sociais, câmera, loja de apps e muito mais — quase um celular de verdade dentro do jogo.</p>
+
+		<div class="celular-secao" style="margin-bottom: 3.2rem;">
+			<div class="aparelho">
+				<div class="tela">
+					<div class="status-cel">
+						<span id="celHoraStatus">12:00</span>
+						<span>BNE 📶 🔋100%</span>
+					</div>
+
+					<div class="tela-home" id="telaHome">
+						<div class="relogio-grande" id="celRelogio">12:00</div>
+						<div class="data-cel">Segunda-feira, Los Santos</div>
+						<div class="grade-apps">
+							<button class="icone-app" onclick="abrirApp('sms')">
+								<span class="quadro" style="background:#34c759;">💬</span>
+								Mensagens
+							</button>
+							<button class="icone-app" onclick="abrirApp('zap')">
+								<span class="quadro" style="background:#25d366;">📞</span>
+								BNE Zap
+							</button>
+							<button class="icone-app" onclick="abrirApp('rede')">
+								<span class="quadro" style="background:#e1306c;">📷</span>
+								RedeSocial
+							</button>
+							<button class="icone-app" onclick="abrirApp('banco')">
+								<span class="quadro" style="background:#007aff;">🏦</span>
+								Banco
+							</button>
+						</div>
+					</div>
+
+					<div class="tela-app" id="appSms">
+						<button class="app-voltar" onclick="fecharApp()">‹</button>
+						<div class="app-titulo-cel">Mensagens</div>
+						<div class="chat-item"><div class="avatar">👮</div><div class="info"><div class="nome">Delegacia Central</div><div class="msg">Compareça à delegacia às 14h.</div></div></div>
+						<div class="chat-item"><div class="avatar">🚗</div><div class="info"><div class="nome">Concessionária</div><div class="msg">Seu veículo está pronto!</div></div></div>
+						<div class="chat-item"><div class="avatar">🏦</div><div class="info"><div class="nome">BNE Banco</div><div class="msg">Depósito de R$ 500 recebido.</div></div></div>
+					</div>
+
+					<div class="tela-app" id="appZap">
+						<button class="app-voltar" onclick="fecharApp()">‹</button>
+						<div class="app-titulo-cel">BNE Zap</div>
+						<div class="chat-item"><div class="avatar">🧑</div><div class="info"><div class="nome">João RP</div><div class="msg">Bora fazer aquele corre hoje?</div></div></div>
+						<div class="chat-item"><div class="avatar">👩</div><div class="info"><div class="nome">Maria Souza</div><div class="msg">Te vejo na garagem às 20h</div></div></div>
+						<div class="chat-item"><div class="avatar">🏍️</div><div class="info"><div class="nome">Grupo Motoclube</div><div class="msg">Pedro: chegando aí!</div></div></div>
+					</div>
+
+					<div class="tela-app" id="appRede">
+						<button class="app-voltar" onclick="fecharApp()">‹</button>
+						<div class="app-titulo-cel">RedeSocial</div>
+						<div class="feed-post"><div class="topo-post">🧑 João RP</div>Fechei meu primeiro carro na concessionária! 🚗🔥</div>
+						<div class="feed-post"><div class="topo-post">👩 Maria Souza</div>Plantão na SAMU hoje, bora salvar vidas 🚑</div>
+						<div class="feed-post"><div class="topo-post">🏍️ Motoclube BNE</div>Encontro sábado às 18h na praça central!</div>
+					</div>
+
+					<div class="tela-app" id="appBanco">
+						<button class="app-voltar" onclick="fecharApp()">‹</button>
+						<div class="app-titulo-cel">Banco</div>
+						<div class="banco-saldo"><div class="valor">R$ 12.480</div><div class="rotulo">Saldo em conta</div></div>
+						<div class="banco-extrato">
+							<div class="item"><span>Salário - Taxista</span><span>+ R$ 850</span></div>
+							<div class="item"><span>Compra Conveniência</span><span>- R$ 42</span></div>
+							<div class="item"><span>Caixa eletrônico</span><span>- R$ 300</span></div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<div class="celular-texto">
+				<h2>📱 Celular realista</h2>
+				<p>SMS, BNE Zap (igual WhatsApp), rede social, banco, câmera e muito mais — quase um celular de verdade dentro do jogo. Clica nos ícones ao lado e dá uma espiada!</p>
+				<p class="dica">👆 Esse é um mockup de demonstração — dentro do jogo tudo funciona de verdade, com dados reais do seu personagem.</p>
+			</div>
+		</div>
+
+		<div class="grade">
 			<div class="card">
 				<span class="icone">💰</span>
 				<h3>Economia completa</h3>
@@ -132,6 +239,11 @@
 				<span class="icone">⭐</span>
 				<h3>Loja VIP e Passe de Batalha</h3>
 				<p>Skins de armas exclusivas, vagas extras de garagem e recompensas de temporada pra quem joga todo dia.</p>
+			</div>
+			<div class="card">
+				<span class="icone">🗺️</span>
+				<h3>GPS e mapa realista</h3>
+				<p>Trace rotas, veja seu destino com coluna de luz e navegue pela cidade como em um app de GPS de verdade.</p>
 			</div>
 		</div>
 	</div>
@@ -158,7 +270,7 @@
 		<h2>Pronto pra começar?</h2>
 		<p class="sub">Entra agora e cria seu personagem.</p>
 		<div class="botoes">
-			<a class="botao ouro" href="mtasa://190.102.40.7:22823">▶ Conectar no servidor</a>
+			<a class="botao roxo" href="mtasa://190.102.40.7:22823">▶ Conectar no servidor</a>
 			<a class="botao contorno" href="https://discord.gg/VjEcZy9S6s" target="_blank">Entrar no Discord</a>
 		</div>
 	</div>
@@ -184,6 +296,26 @@
 			t.classList.add("mostrar");
 			setTimeout(function () { t.classList.remove("mostrar"); }, 1800);
 		});
+	}
+
+	function atualizarRelogioCel() {
+		var h = new Date();
+		var texto = String(h.getHours()).padStart(2, "0") + ":" + String(h.getMinutes()).padStart(2, "0");
+		document.getElementById("celRelogio").textContent = texto;
+		document.getElementById("celHoraStatus").textContent = texto;
+	}
+	atualizarRelogioCel();
+	setInterval(atualizarRelogioCel, 10000);
+
+	var APPS = { sms: "appSms", zap: "appZap", rede: "appRede", banco: "appBanco" };
+	function abrirApp(id) {
+		document.getElementById("telaHome").classList.add("escondido");
+		for (var k in APPS) document.getElementById(APPS[k]).classList.remove("ativo");
+		document.getElementById(APPS[id]).classList.add("ativo");
+	}
+	function fecharApp() {
+		for (var k in APPS) document.getElementById(APPS[k]).classList.remove("ativo");
+		document.getElementById("telaHome").classList.remove("escondido");
 	}
 </script>
 
